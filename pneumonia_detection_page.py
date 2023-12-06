@@ -47,23 +47,7 @@ def pneumonia_detection_page():
         img_array = preprocess_image(uploaded_file)
 
         # Load your Keras model
-        # model = load_model('saved_modelcnn.h5')  # Update with your model's filename
-        import gdown
-        from tensorflow.keras.models import load_model
-
-        # Replace 'YOUR_FILE_ID' with the actual file ID
-        file_id = 'YOUR_FILE_ID'
-        url = f'https://drive.google.com/uc?id={file_id}'
-
-        # Specify the local file path to save the model
-        output_path = 'saved_modelcnn.h5'
-
-        # Download the file
-        gdown.download(url, output_path, quiet=False)
-
-        # Load the model
-        model = load_model(output_path)
-
+        model = load_model('saved_modelcnn.h5')  # Update with your model's filename
 
         # Make prediction using your model
         prediction = model.predict(img_array)[0]
